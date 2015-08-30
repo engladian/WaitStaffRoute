@@ -1,33 +1,47 @@
-﻿use-strict;
+﻿"use strict";
 
-var app = angular.module('waitStaffApp', []);
+var app = angular.module('WaitStaffApp', ['ngRoute']);
 
-app.controller('waitStaffController', function ($scope) {
-    resetAll();
+app.config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+        .when('/', {
+            templateUrl: 'views/_intro.html'
+        })
+        .when('/new-meal', {
+            templateUrl: 'views/_newmeal.html',
+            controller: 'NewMealController'
+        })
+        .when('/my-earnings', {
+            templateUrl: 'views/_myearnings.html',
+            controller: 'MyEarningsController'
+        });
+}]);
 
-    $scope.submitMeal = function () {
-        if ($scope.waitStaffForm.$valid) {
-            $scope.charges.subtotal = $scope.meal.basePrice * (1 + ($scope.meal.taxRate / 100));
+app.controller('NewMealController', function ($scope) {
+    ResetMealForm();
+    $scope.SubmitMeal = function () {
+        if ($scope.NewMealForm.$valid) {
+            $scope.charges.subTotal = $scope.meal.basePrice * (1 + ($scope.meal.taxRate / 100));
             $scope.charges.tip = $scope.meal.basePrice * ($scope.meal.tipPercent / 100);
-            $scope.charges.total = $scope.charges.subtotal + $scope.charges.tip;
-            $scope.earnings.tipTotal += $scope.charges.tip;
-            $scope.earnings.mealCount++;
-            $scope.earnings.avgTipPerMeal = $scope.earnings.tipTotal / $scope.earnings.mealCount;
+            $scope.charges.total = $scope.charges.subTotal + $scope.charges.tip;
+            //$rootscope.earnings.tipTotal += $scope.charges.tip;
+            //$rootscope.earnings.mealCount++;
+            //$rootscope.earnings.avgTipPerMeal = $rootscope.earnings.tipTotal / $rootscope.earnings.mealCount;
         }
     };
 
-    $scope.cancelMeal = function () {
-        $scope.meal = {};
+    $scope.CancelMeal = function () {
+        ResetMealForm();
     };
 
-    $scope.reset = function () {
-        resetAll();
-        $scope.waitStaffForm.$setPristine();
-    };
-
-    function resetAll() {
+    function ResetMealForm() {
         $scope.meal = {};
-        $scope.charges = { subtotal: 0, tip: 0, total: 0 };
-        $scope.earnings = { tipTotal: 0, mealCount: 0, avgTipPerMeal: 0 };
+        $scope.charges = { subTotal: 0, tip: 0, total: 0 };
+    }
+});
+
+app.controller('MyEarningsController', function ($rootscope) {
+    function ResetAll() {
+        $rootscope.earnings = { tipTotal: 0, mealCount: 0, avgTipPerMeal: 0 };
     }
 });
