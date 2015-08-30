@@ -1,32 +1,36 @@
-﻿<div class="row smallbox" style="margin-top: 40px">
-    <div class="row boxheader">My Earnings Info</div>
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-sm-8 totboxtxtleft">
-            Tip Total:
+﻿<div class="row" ng-controller="MyEarningsController">
+    <div class="col-sm-6 col-sm-offset-3 smallbox" style="margin-top: 40px">
+        <div class="row boxheader">
+            My Earnings Info
         </div>
-        <div class="col-sm-4 totboxtxtright">
-            {{earnings.tipTotal | currency}}
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-sm-6 text-right totboxtxt">
+                Tip Total:
+            </div>
+            <div class="col-sm-6 text-left totboxtxt">
+                {{earnings.tipTotal | currency}}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 totboxtxtleft">
-            Meal Count:
+        <div class="row">
+            <div class="col-sm-6 text-right totboxtxt">
+                Meal Count:
+            </div>
+            <div class="col-sm-6 text-left totboxtxt">
+                {{earnings.mealCount}}
+            </div>
         </div>
-        <div class="col-sm-4 totboxtxtright">
-            {{earnings.mealCount}}
+        <div class="row">
+            <div class="col-sm-6 text-right totboxtxt">
+                Average Tip Per Meal:
+            </div>
+            <div class="col-sm-6 text-left totboxtxt">
+                {{earnings.avgTipPerMeal | currency}}
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-8 totboxtxtleft">
-            Average Tip Per Meal:
-        </div>
-        <div class="col-sm-4 totboxtxtright">
-            {{earnings.avgTipPerMeal | currency}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-1 col-sm-offset-11" style="margin-top:10px">
-            <button type="submit" class="btn btn-lg text-danger" ng-click="reset()">Reset</button>
+        <div class="row">
+            <div class="col-sm-2 col-sm-offset-10" style="margin-top:80px">
+                <button type="submit" class="btn btn-lg text-danger" ng-click="ResetAll()">Reset</button>
+            </div>
         </div>
     </div>
 </div>
