@@ -1,0 +1,27 @@
+﻿<div class="row smallbox" style="margin-top: 40px">
+    <div class="row boxheader">My Earnings Info</div>
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-sm-8 totboxtxtleft">
+            Tip Total:
+        </div>
+        <div class="col-sm-4 totboxtxtright">
+            {{earnings.tipTotal | currency}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 totboxtxtleft">
+            Meal Count:
+        </div>
+        <div class="col-sm-4 totboxtxtright">
+            {{earnings.mealCount}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8 totboxtxtleft">
+            Average Tip Per Meal:
+        </div>
+        <div class="col-sm-4 totboxtxtright">
+            {{earnings.avgTipPerMeal | currency}}
+        </div>
+    </div>
+</div>

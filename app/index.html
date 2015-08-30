@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+    <title>Wait Staff App</title>
+    <link href="~/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/app/css/appstyle.css" rel="stylesheet" />
+</head>
+<body ng-app="WaitStaffApp">
+    <div class="container" ng-controller="WaitStaffContainer">
+        <div class="row mainheader">
+            <h1>Waitstaff Calculator</h1>
+        </div>
+        <!--Page Selectors-->
+
+
+        <div ng-view></div> <!--Dynamic partial views-->
+    </div>
+    <script src="~/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/bower_components/angular/angular.js"></script>
+    <script src="~/bower_components/angular-route/angular-route.js"></script>
+    <script src="~/app/js/waitstaff.js"></script>
+</body>
+</html>
