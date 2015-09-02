@@ -1,5 +1,5 @@
 ﻿"use strict";
-var app = angular.module('WaitStaffApp', ['ngRoute']);
+var app = angular.module('WaitStaffApp', ['ngRoute', 'ngAnimate']);
 
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -61,4 +61,15 @@ app.controller('MyEarningsController', function ($scope, $rootScope) {
         $scope.earnings = { tipTotal: 0, mealCount: 0, avgTipPerMeal: 0 };
         $rootScope.earnings = $scope.earnings;
     }
+});
+
+app.run(function ($rootScope, $timeout) {
+    $rootScope.$on('$routeChangeStart', function () {
+        $rootScope.isLoading = true;
+    });
+    $rootScope.$on('$routeChangeSuccess', function () {
+        $timeout(function () {
+            $rootScope.isLoading = false;
+        }, 500); //Half second
+    });
 });
