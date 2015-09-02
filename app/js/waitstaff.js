@@ -1,5 +1,6 @@
 ﻿"use strict";
 var app = angular.module('WaitStaffApp', ['ngRoute']);
+
 app.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -12,8 +13,15 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/my-earnings', {
             templateUrl: 'views/_myearnings.html',
             controller: 'MyEarningsController'
-        });
+        })
+        .otherwise('/');
 }]);
+
+app.controller('NavController', function ($scope, $location) {
+    $scope.isActive = function (route) {
+        return route === $location.path();
+    };
+});
 
 app.controller('NewMealController', function ($scope, $rootScope) {
     ResetMealForm();
@@ -49,9 +57,7 @@ app.controller('MyEarningsController', function ($scope, $rootScope) {
         $rootScope.earnings = { tipTotal: 0, mealCount: 0, avgTipPerMeal: 0 };
     }
     $scope.earnings = $rootScope.earnings;
-    $scope.ResetAll = function() {
-      //  console.log('Reset All');
-
+    $scope.ResetAll = function () {
         $scope.earnings = { tipTotal: 0, mealCount: 0, avgTipPerMeal: 0 };
         $rootScope.earnings = $scope.earnings;
     }

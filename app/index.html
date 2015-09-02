@@ -10,19 +10,19 @@
             <h1>Waitstaff Calculator</h1>
         </div>
         <!--Page Selectors-->
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 text-right">
-                <ol class="breadcrumb text-center">
-                    <li><a href="#/">Home</a></li>
-                    <li><a href="#/new-meal">New Meal</a></li>
-                    <li><a href="#/my-earnings">My Earnings</a></li>
-                </ol>
+        <div class="row" ng-controller="NavController">
+            <div class="col-sm-6 col-sm-offset-4" style="margin-bottom:30px;">
+                <ul class="nav nav-pills">
+                    <li ng-class="{active: isActive('/')}"><a href="#/">Home</a></li>
+                    <li ng-class="{active: isActive('/new-meal')}"><a href="#/new-meal">New Meal</a></li>
+                    <li ng-class="{active: isActive('/my-earnings')}"><a href="#/my-earnings">My Earnings</a></li>
+                </ul>
             </div>
         </div>
         <div ng-view></div> <!--Dynamic partial views-->
     </div>
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
     <script src="../app/js/waitstaff.js"></script>
